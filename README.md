@@ -10,7 +10,7 @@ Hope you have it by now. If not, you need to go to [google cloud main page](http
 
 You will need to provide data of your credit card :/. Sorry, Google apparently can't do anything about that.
 
-Make sure to enable dataproc API (here)[https://console.cloud.google.com/flows/enableapi?apiid=dataproc].
+Make sure to enable dataproc API [here](https://console.cloud.google.com/flows/enableapi?apiid=dataproc).
 
 Remember your `project-id`. You gonna need it later.
 
@@ -25,13 +25,13 @@ Install `gcloud` tool for your system from [here](https://cloud.google.com/sdk/d
 Basic setup:
 ```
 export PROJECT_NAME =<<YOUR PROJECT NAME>>
-export BUCKET_NAME=<<YOUR BUCKET NAME>> # my-weird-bucket-name123
+export BUCKET_NAME=<<YOUR BUCKET NAME>> # choose some unique name like my-weird-bucket-name123
 export CLUSTER_NAME=cluster-1
 ```
 
 Make sure you use the proper account:
 ```
-gcloud account login
+gcloud auth login
 ```
 
 Set defaults (don't ask):
@@ -51,8 +51,6 @@ Make sure you have environment variables set from the previous step.
 
 ```
 gcloud dataproc clusters create $CLUSTER_NAME \
---project $PROJECT_NAME \
---bucket $BUCKET_NAME \
 --initialization-action-timeout 1200 \
 --initialization-actions gs://pyspark-workshop/init.sh \
 --master-machine-type n1-standard-1 \
@@ -65,7 +63,7 @@ gcloud dataproc clusters create $CLUSTER_NAME \
 --num-preemptible-workers 0
 ```
 
-You can also use (graphical UI)[https://console.cloud.google.com/dataproc/clusters].
+You can also use [graphical UI](https://console.cloud.google.com/dataproc/clusters).
 
 ### Port forwarding
 
@@ -86,21 +84,16 @@ And open your browser using:
     --user-data-dir=/tmp/
 ```
 where browser executable path is:
+
 1. `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome` for MacOS.
 2. `google-chrome` for Linux.
 3. `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe` for Win.
 
 
----
-You can also use port forwarding (if you feel more familiar with it):
-```
-gcloud compute ssh $CLUSTER_NAME-m -- -vvv \
-        -L 8123:localhost:8123 \
-        -L 8080:localhost:8080 \
-        -L 8088:localhost:8088
-```
----
-
 ### Verification
 
-Check you can access jupiter notebook on port `8123` and Yarn UI on port `8088`.
+Check you can access $CLUSTER_NAME-m host jupiter notebook on port `8123` and Yarn UI on port `8088`.
+
+You should also be able to see everything in the Google Cloud UI.
+
+Upload notebooks from this repo.
