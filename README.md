@@ -97,6 +97,7 @@ Check you can access $CLUSTER_NAME-m host jupiter notebook on port `8123` and Ya
 Copy files using:
 ```
 git clone https://github.com/szymonm/pyspark-dataproc-workshop.git 
+cd pyspark_dataproc_workshop
 bash copy_data.sh
 ```
 
