@@ -94,6 +94,13 @@ where browser executable path is:
 
 Check you can access $CLUSTER_NAME-m host jupiter notebook on port `8123` and Yarn UI on port `8088`.
 
+Copy files using:
+```
+git clone git@github.com:szymonm/pyspark-dataproc-workshop.git
+bash copy_data.sh
+```
+
 You should also be able to see everything in the Google Cloud UI.
 
 Upload notebooks from this repo.
+
