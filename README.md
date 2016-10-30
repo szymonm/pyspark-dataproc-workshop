@@ -24,7 +24,7 @@ Install `gcloud` tool for your system from [here](https://cloud.google.com/sdk/d
 
 Basic setup:
 ```
-export PROJECT_NAME =<<YOUR PROJECT NAME>>
+export PROJECT_NAME =<<YOUR PROJECT ID>>
 export BUCKET_NAME=<<YOUR BUCKET NAME>> # choose some unique name like my-weird-bucket-name123
 export CLUSTER_NAME=cluster-1
 ```
