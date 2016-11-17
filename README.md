@@ -1,5 +1,17 @@
 # pyspark-dataproc-workshop
 
+## Introduction
+
+At the beginning we start with running Spark locally.
+
+We're going to use docker image `jupyter/pyspark-notebook` like this:
+
+```bash
+docker run -d -p 8888:8888 jupyter/pyspark-notebook
+```
+
+Go to [http://localhost:8888/], upload notebook `rdd-first-steps.ipynb` and open it.
+
 ## Setup
 
 You can use how-to from [dataproc documentation](https://cloud.google.com/dataproc/docs/guides/setup-project).
@@ -14,7 +26,7 @@ Make sure to enable dataproc API [here](https://console.cloud.google.com/flows/e
 
 Remember your `project-id`. You gonna need it later.
 
-### Gcloud SDK
+### Gcloud SDK (GB)
 
 Install `gcloud` tool for your system from [here](https://cloud.google.com/sdk/downloads).
 
@@ -45,12 +57,17 @@ Create a bucket (we will need it for our cluster):
 gsutil mb gs://$BUCKET_NAME
 ```
 
-### Running cluster
+### Running cluster (GB)
 
 Make sure you have environment variables set from the previous step.
 
 ```
+export BUCKET_NAME=pyspark-workshop
+export PROJECT_NAME=growbots-cloud
+export CLUSTER_NAME=<<choose your cluster name>>
+
 gcloud dataproc clusters create $CLUSTER_NAME \
+--bucket $BUKCET_NAME
 --initialization-action-timeout 1200 \
 --initialization-actions gs://pyspark-workshop/init.sh \
 --master-machine-type n1-standard-1 \
