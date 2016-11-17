@@ -67,7 +67,7 @@ export PROJECT_NAME=growbots-cloud
 export CLUSTER_NAME=<<choose your cluster name>>
 
 gcloud dataproc clusters create $CLUSTER_NAME \
---bucket $BUKCET_NAME
+--bucket $BUCKET_NAME \
 --initialization-action-timeout 1200 \
 --initialization-actions gs://pyspark-workshop/init.sh \
 --master-machine-type n1-standard-1 \
